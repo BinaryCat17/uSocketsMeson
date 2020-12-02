@@ -8,31 +8,31 @@ deps = [zlib]
 if get_option('with_openssl')
    openssl = dependency('openssl', required : true)
    deps += openssl
-   add_project_arguments('-DLIBUS_USE_OPENSSL', language : 'c')
+   add_global_arguments('-DLIBUS_USE_OPENSSL', language : ['c', 'cpp'])
 endif
 
 if get_option('with_wolfssl')
    wolfssl = dependency('wolfssl', required : true)
    deps += wolfssl
-   add_project_arguments('-DLIBUS_USE_WOLFSSL', language : 'c')
+   add_global_arguments('-DLIBUS_USE_WOLFSSL', language : ['c', 'cpp'])
 endif
 
 if get_option('with_libuv')
    libuv = dependency('libuv', required : true)
    deps += libuv
-   add_project_arguments('-DLIBUS_USE_LIBUV', language : 'c')
+   add_global_arguments('-DLIBUS_USE_LIBUV', language : ['c', 'cpp'])
 endif
 
 if get_option('with_gcd')
    libdispatch = dependency('libdispatch', required : true)
    deps += libdispatch
-   add_project_arguments('-DLIBUS_USE_GCD', language : 'c')
+   add_global_arguments('-DLIBUS_USE_GCD', language : ['c', 'cpp'])
 endif
 
 if get_option('with_asan')
    sanitizers = dependency('sanitizers', required : true)
    deps += sanitizers
-   add_project_arguments('-fsanitize=address -g', language : 'c')
+   add_global_arguments('-fsanitize=address -g', language : ['c', 'cpp'])
 endif
 
 includes = include_directories('./uSockets/src')
