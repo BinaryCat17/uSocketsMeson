@@ -2,7 +2,7 @@ project('uSocketsMeson', ['c', 'cpp'],
       version : '1.0',
       default_options : ['cpp_std=c++17', 'warning_level=3'])
 
-includes = include_directories('uSockets/src')
+includes = include_directories('./uSockets/src')
 
 lib = static_library('uSocketsMeson',
        'uSockets/src/bsd.c',
