@@ -1,4 +1,4 @@
-option('with_openssl', type : 'boolean', value : false)
+option('with_openssl', type : 'boolean', value : true)
 option('with_wolfssl', type : 'boolean', value : false)
 option('with_libuv', type : 'boolean', value : false)
 option('with_gcd', type : 'boolean', value : false)
