@@ -8,31 +8,31 @@ deps = [zlib]
 if get_option('with_openssl')
    openssl = dependency('openssl', required : true)
    deps += openssl
-   add_global_arguments('-DLIBUS_USE_OPENSSL', language : ['c', 'cpp'])
+   add_project_arguments('-DLIBUS_USE_OPENSSL', language : ['c', 'cpp'])
 endif
 
 if get_option('with_wolfssl')
    wolfssl = dependency('wolfssl', required : true)
    deps += wolfssl
-   add_global_arguments('-DLIBUS_USE_WOLFSSL', language : ['c', 'cpp'])
+   add_project_arguments('-DLIBUS_USE_WOLFSSL', language : ['c', 'cpp'])
 endif
 
 if get_option('with_libuv')
    libuv = dependency('libuv', required : true)
    deps += libuv
-   add_global_arguments('-DLIBUS_USE_LIBUV', language : ['c', 'cpp'])
+   add_project_arguments('-DLIBUS_USE_LIBUV', language : ['c', 'cpp'])
 endif
 
 if get_option('with_gcd')
    libdispatch = dependency('libdispatch', required : true)
    deps += libdispatch
-   add_global_arguments('-DLIBUS_USE_GCD', language : ['c', 'cpp'])
+   add_project_arguments('-DLIBUS_USE_GCD', language : ['c', 'cpp'])
 endif
 
 if get_option('with_asan')
    sanitizers = dependency('sanitizers', required : true)
    deps += sanitizers
-   add_global_arguments('-fsanitize=address -g', language : ['c', 'cpp'])
+   add_project_arguments('-fsanitize=address -g', language : ['c', 'cpp'])
 endif
 
 includes = include_directories('./uSockets/src')
@@ -51,7 +51,6 @@ lib = static_library('uSocketsMeson',
        install : true,
        dependencies : deps,
        include_directories : includes)
-
 
 uSocketsMeson_dep = declare_dependency(link_with : lib,
       include_directories : includes, dependencies : deps)
