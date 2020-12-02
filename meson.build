@@ -2,6 +2,8 @@ project('uSocketsMeson', ['c', 'cpp'],
       version : '1.0',
       default_options : ['cpp_std=c++17', 'warning_level=3'])
 
+includes = include_directories('uSockets/src')
+
 lib = static_library('uSocketsMeson',
        'uSockets/src/bsd.c',
        'uSockets/src/context.c',
@@ -14,4 +16,7 @@ lib = static_library('uSocketsMeson',
        'uSockets/src/eventing/libuv.c',
        'uSockets/src/eventing/epoll_kqueue.c',
        install : true,
-       include_directories : include_directories('uSockets/src'))
+       include_directories : includes)
+
+uSocketsMeson_dep = declare_dependency(link_with : lib,
+      include_directories : includes)
