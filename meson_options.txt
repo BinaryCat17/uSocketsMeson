@@ -1,0 +1,5 @@
+option('WITH_OPENSSL', type : 'boolean', value : false)
+option('WITH_WOLFSSL', type : 'boolean', value : false)
+option('WITH_LIBUV', type : 'boolean', value : false)
+option('WITH_GCD', type : 'boolean', value : false)
+option('WITH_ASAN)', type : 'boolean', value : false)
